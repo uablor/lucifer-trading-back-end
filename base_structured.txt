@@ -1,0 +1,24 @@
+// create module
+mkdir -p apps/wallet/application/use_cases/command \
+         apps/wallet/application/use_cases/queires \
+         apps/wallet/config \
+         apps/wallet/domain \
+         apps/wallet/infrastructure/mappers \
+         apps/wallet/infrastructure/repository \
+         apps/wallet/persentation/api/serlializers \
+         apps/wallet/persentation/api/views && \
+
+touch apps/wallet/domain/wallet.py \
+      apps/wallet/domain/wallet_repository.py \
+      apps/wallet/infrastructure/mappers/wallet_mappers.orm.py \
+      apps/wallet/infrastructure/repository/wallet_repository.orm.py \
+      apps/wallet/persentation/api/serlializers/serlializers.py \
+      apps/wallet/persentation/api/views/wallet_view.py \
+touch apps/wallet/application/use_cases/command/create_wallet.py \
+      apps/wallet/application/use_cases/queires/get_all_wallet.py \
+      apps/wallet/application/use_cases/queires/get_one_wallet.py \
+      apps/wallet/application/use_cases/command/hard_delete_wallet.py \
+      apps/wallet/application/use_cases/command/soft_delete_wallet.py \
+      apps/wallet/application/use_cases/command/restore_wallet.py \
+      apps/wallet/application/use_cases/command/update_wallet.py
+      

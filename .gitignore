@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+db.sqlite3
+*.db
+*.db-journal
+media/
+staticfiles/
+
+# If you are using Django migrations, but don’t want to keep pyc files
+*/migrations/*.pyc
+
+# Virtual environment
+env/
+venv/
+ENV/
+.env
+.venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System
+.DS_Store
+Thumbs.db
+
+# Coverage / Testing
+.coverage
+.tox/
+.nox/
+pytest_cache/
+htmlcov/
+
+# Node (if using npm/yarn for frontend)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# Build
+dist/
+build/
+
+# dotenv
+*.env
+*.local

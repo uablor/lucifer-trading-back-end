@@ -1,0 +1,38 @@
+name: Auto update requirements
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/requirements/**'
+
+jobs:
+  update_requirements:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10
+
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements/dev.txt
+
+      - name: Update requirements/base.txt
+        run: |
+          pip freeze > requirements/base.txt
+
+      - name: Commit updated requirements.txt
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+          git add requirements/base.txt
+          git commit -m "Update requirements/base.txt" || echo "No changes"
+          git push
