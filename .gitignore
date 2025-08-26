@@ -55,5 +55,5 @@ dist/
 build/
 
 # dotenv
-*.env
+# *.env
 *.local
