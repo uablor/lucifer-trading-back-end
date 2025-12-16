@@ -57,3 +57,9 @@ class User(SoftDeletableModel,AbstractUser, TimeStampedModel):
     objects = SoftDeletableUserManager()
     def __str__(self):
         return self.username or self.email
+    
+    class Meta:
+        permissions = [
+            ("soft_delete_user", "Can soft delete user"),
+            ("hard_delete_user", "Can hard delete user"),
+        ]

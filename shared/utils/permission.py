@@ -16,6 +16,7 @@ class HasAnyPermission(permissions.BasePermission):
     def group_has_permission(self, request, view):
         pass
 
+
     def has_permission(self, request, view):
         if request.user.is_superuser:
             return True

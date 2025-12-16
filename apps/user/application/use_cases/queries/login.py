@@ -30,4 +30,8 @@ class LoginUserUseCase(BestUserUseCase):
             "is_active": user.is_active ,
             "refresh": str(refresh),
             "access": str(refresh.access_token),
+            "is_superuser": user.is_superuser,
+            "is_verify": user_find.is_verify,
+            "is_2fa_enabled": user_find.is_2fa_enabled,
+            "group": user_find.groups.first().name if user_find.groups else None
         }

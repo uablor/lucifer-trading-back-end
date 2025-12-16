@@ -46,7 +46,6 @@ class UserSerializer(serializers.Serializer):
     groups = serializers.PrimaryKeyRelatedField(many=True, queryset=Group.objects.all(), allow_null=True, required=False)
     user_permissions = serializers.PrimaryKeyRelatedField(many=True, queryset=Permission.objects.all(), allow_null=True, required=False)
 
-
 class UserRegisterSerializer(UserSerializer):
     password2 = serializers.CharField(required=True, write_only=True,
         error_messages={
@@ -60,7 +59,6 @@ class UserRegisterSerializer(UserSerializer):
         if data['password'] != data['password2']:
             raise serializers.ValidationError(_("Passwords don't match"))
         return data
-
 
 class UserLoginSerializer(serializers.Serializer):
     password = serializers.CharField(required=True,
@@ -79,7 +77,6 @@ class UserLoginSerializer(serializers.Serializer):
         }
     )
 
-   
 class RefreshTokenSerializer(serializers.Serializer):
     refresh = serializers.CharField(required=True,
         error_messages={
@@ -128,7 +125,6 @@ class PasswordSerializer(serializers.Serializer):
             raise serializers.ValidationError(_("Passwords don't match"))
         return data
     
-
 class PasswordResetSerializer(serializers.Serializer):
     
     password = serializers.CharField(write_only=True, required = True, validators = [validate_password])
@@ -139,4 +135,4 @@ class PasswordResetSerializer(serializers.Serializer):
             raise serializers.ValidationError("Passwords do not match.")
         data.pop('confirm_password')
         return data
-        
+

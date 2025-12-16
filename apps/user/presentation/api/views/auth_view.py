@@ -66,7 +66,7 @@ class UserAuthMeView( BestUserUseCase, APIView):
 
 class UserLoginView(BestUserUseCase,APIView):
     serializer_class = UserLoginSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [AllowAny,]
 
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
@@ -85,7 +85,7 @@ class UserLoginView(BestUserUseCase,APIView):
 
 class UserLogoutView(BestUserUseCase, APIView):
     serializer_class = RefreshTokenSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,]
 
     def post(self, request):
         refresh_token = self.serializer_class(data=request.data).data.get('refresh_token')
@@ -101,7 +101,7 @@ class UserLogoutView(BestUserUseCase, APIView):
 
 class VerifyEmailAPIView(BestUserUseCase, APIView):
 
-    permission_classes = [AllowAny]
+    permission_classes = [AllowAny,]
     
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -125,7 +125,7 @@ class VerifyEmailAPIView(BestUserUseCase, APIView):
 
 class ResendVerifyEmailAPIView(BestUserUseCase, APIView):
     serializer_class = EmailSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [AllowAny,]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -146,7 +146,7 @@ class ResendVerifyEmailAPIView(BestUserUseCase, APIView):
 
 class ChangePasswordView(BestUserUseCase, APIView):
     serializer_class = PasswordSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,]
     
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -165,7 +165,7 @@ class ChangePasswordView(BestUserUseCase, APIView):
 
 class ForgotPasswordView(BestUserUseCase, APIView):
     serializer_class = EmailSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [AllowAny,]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -186,7 +186,7 @@ class ForgotPasswordView(BestUserUseCase, APIView):
 
 class PasswordResetView(BestUserUseCase, APIView):
     serializer_class = PasswordResetSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [AllowAny,]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

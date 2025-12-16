@@ -93,3 +93,5 @@ python manage.py test
 
 
 $ python manage.py migrate --run-syncdb
+
+& daphne -p 8000 Core.asgi:application

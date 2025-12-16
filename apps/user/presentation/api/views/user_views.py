@@ -13,8 +13,10 @@ from apps.user.presentation.api.serlializers.serializers import UserSerializer, 
 from shared.utils.parse_pagination_params import parse_pagination_params
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from apps.user.infrastructure.mappers.user_mapper import UserMapper
+from apps.user.config.permission import UserPermission
 
 class BestUserUseCase:
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self._get_one_usecase = GetOneUserUseCase()
@@ -28,7 +30,7 @@ class BestUserUseCase:
      
         
 class UserView(BestUserUseCase, APIView, ):
-    permission_classes = [AllowAny,]
+    permission_classes = [IsAuthenticated, UserPermission,]
     serializer_class = UserSerializer
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -88,7 +90,7 @@ class UserRegisterView(BestUserUseCase,  APIView, ):
 
 
 class UserHardDeleteView(BestUserUseCase, APIView,):
-    permission_classes = [AllowAny,]
+    permission_classes = [IsAuthenticated, UserPermission,]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -101,7 +103,7 @@ class UserHardDeleteView(BestUserUseCase, APIView,):
 
 
 class UserRestoreView(BestUserUseCase, APIView,):
-    permission_classes = [AllowAny,]
+    permission_classes = [IsAuthenticated, UserPermission,]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

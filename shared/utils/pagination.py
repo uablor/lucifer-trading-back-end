@@ -66,7 +66,7 @@ def fetch_with_pagination(
                 'count': total,
                 'limit': 0,
                 'totalPages': 1,
-                'currentPage': 1,
+                'page': 1,
             }
         }
 
@@ -90,6 +90,6 @@ def fetch_with_pagination(
             'count': len(domain_objs),
             'limit': paginator.page_size,
             'totalPages': paginator.page.paginator.num_pages,
-            'currentPage': paginator.page.number,
+            'page': paginator.page.number,
         }
     }

@@ -7,7 +7,7 @@ from apps.user.application.use_cases.twofa.validate_setup import ValidateSetupTw
 from apps.user.application.use_cases.twofa.validate_login import ValidateLoginTwoFAUseCase
 
 class GenerateOTPView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,]
 
     def post(self, request):
         data = GenerateTwoFAUseCase().execute(request.user)
@@ -15,7 +15,7 @@ class GenerateOTPView(APIView):
 
 
 class ValidateOTPView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,]
 
     def post(self, request):
         otp = request.data.get("otp")
@@ -26,7 +26,7 @@ class ValidateOTPView(APIView):
 
 class ValidateOTP_UserLoginView(APIView):
     authentication_classes = []
-    permission_classes = [AllowAny]
+    permission_classes = [AllowAny,]
 
     def post(self, request):
         otp = request.data.get("code")
